@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/732/732245.png" type="image/png">
+
+    <title>Nexus</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom CSS for animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+        
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        
+        /* Gradient text */
+        .gradient-text {
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        /* Custom button hover effect */
+        .btn-hover-effect {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-hover-effect:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.5);
+        }
+        
+        .btn-hover-effect::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(255,255,255,0.1), rgba(255,255,255,0.3));
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .btn-hover-effect:hover::after {
+            transform: translateX(0);
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #3b82f6;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2563eb;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50 text-gray-800">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center">
+                    <span class="text-xl font-bold gradient-text">Nexus</span>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#features" class="text-gray-600 hover:text-blue-500 transition">Features</a>
+                    <a href="#solutions" class="text-gray-600 hover:text-blue-500 transition">Solutions</a>
+                    <a href="#pricing" class="text-gray-600 hover:text-blue-500 transition">Pricing</a>
+                    <a href="#testimonials" class="text-gray-600 hover:text-blue-500 transition">Testimonials</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <a href="#" class="text-gray-600 hover:text-blue-500 transition">Login</a>
+                    <a href="#signup" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition btn-hover-effect">Sign Up</a>
+                </div>
+                
+                <button id="mobile-menu-button" class="md:hidden text-gray-600">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#features" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-blue-500 hover:bg-gray-50">Features</a>
+                <a href="#solutions" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-blue-500 hover:bg-gray-50">Solutions</a>
+                <a href="#pricing" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-blue-500 hover:bg-gray-50">Pricing</a>
+                <a href="#testimonials" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-blue-500 hover:bg-gray-50">Testimonials</a>
+                <div class="pt-4 border-t border-gray-200">
+                    <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-blue-500 hover:bg-gray-50">Login</a>
+                    <a href="#signup" class="block mt-2 px-3 py-2 rounded-md text-base font-medium text-white bg-blue-500 hover:bg-blue-600">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 to-purple-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="md:flex items-center justify-between">
+                <div class="md:w-1/2 animate-fade-in">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                        Build <span class="gradient-text">Amazing</span> Digital Experiences
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-600 mb-8">
+                        Nexus helps you create stunning websites and applications with our powerful platform and intuitive tools.
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#signup" class="px-6 py-3 bg-blue-500 text-white rounded-md text-center hover:bg-blue-600 transition btn-hover-effect delay-100">
+                            Get Started Free
+                        </a>
+                        <a href="#demo" class="px-6 py-3 border border-blue-500 text-blue-500 rounded-md text-center hover:bg-blue-50 transition delay-200">
+                            Watch Demo <i class="fas fa-play-circle ml-2"></i>
+                        </a>
+                    </div>
+                    <div class="mt-8 flex items-center space-x-2 text-gray-500 delay-300">
+                        <i class="fas fa-check-circle text-green-500"></i>
+                        <span>No credit card required</span>
+                    </div>
+                </div>
+                <div class="md:w-1/2 mt-12 md:mt-0 animate-fade-in delay-200">
+                    <div class="relative">
+                        <div class="absolute -top-6 -left-6 w-full h-full bg-blue-200 rounded-2xl -z-10"></div>
+                        <div class="relative overflow-hidden rounded-2xl shadow-xl">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                                 alt="Dashboard screenshot" 
+                                 class="w-full h-auto object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Trusted By Section -->
+    
+    
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="inline-block px-3 py-1 text-sm font-semibold text-blue-500 bg-blue-100 rounded-full mb-4">Features</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Powerful Features to <span class="gradient-text">Accelerate</span> Your Growth</h2>
+                <p class="max-w-2xl mx-auto text-gray-600">Our platform provides everything you need to build, launch, and scale your digital presence.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition animate-fade-in delay-100">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-bolt text-blue-500 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Lightning Fast</h3>
+                    <p class="text-gray-600">Optimized for performance with instant load times and smooth interactions.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition animate-fade-in delay-200">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-mobile-alt text-purple-500 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Fully Responsive</h3>
+                    <p class="text-gray-600">Looks perfect on any device, from mobile phones to large desktop screens.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition animate-fade-in delay-300">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-cog text-green-500 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Customizable</h3>
+                    <p class="text-gray-600">Easily customize every aspect to match your brand identity and requirements.</p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition animate-fade-in delay-100">
+                    <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-shield-alt text-yellow-500 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Secure</h3>
+                    <p class="text-gray-600">Enterprise-grade security with regular updates and automatic backups.</p>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition animate-fade-in delay-200">
+                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-chart-line text-red-500 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Analytics</h3>
+                    <p class="text-gray-600">Built-in analytics to track performance and understand your audience.</p>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition animate-fade-in delay-300">
+                    <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-headset text-indigo-500 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">24/7 Support</h3>
+                    <p class="text-gray-600">Dedicated support team available around the clock to help you succeed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Solutions Section -->
+    <section id="solutions" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="inline-block px-3 py-1 text-sm font-semibold text-purple-500 bg-purple-100 rounded-full mb-4">Solutions</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Tailored Solutions for <span class="gradient-text">Your Business</span></h2>
+                <p class="max-w-2xl mx-auto text-gray-600">We provide specialized solutions designed to meet the unique needs of your industry.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-gradient-to-br from-blue-500 to-purple-600 p-8 rounded-xl text-white">
+                    <h3 class="text-2xl font-bold mb-4">E-Commerce</h3>
+                    <p class="mb-6">Build stunning online stores with our powerful e-commerce platform that converts visitors into customers.</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle mr-3"></i>
+                            <span>Product management</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle mr-3"></i>
+                            <span>Secure payments</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle mr-3"></i>
+                            <span>Inventory tracking</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="inline-block px-6 py-3 bg-white text-blue-600 rounded-md font-medium hover:bg-gray-100 transition">Learn More</a>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-gray-50 p-6 rounded-lg hover:shadow-md transition">
+                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                            <i class="fas fa-briefcase text-blue-500"></i>
+                        </div>
+                        <h4 class="font-semibold mb-2">Corporate</h4>
+                        <p class="text-sm text-gray-600">Professional websites for businesses of all sizes.</p>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-6 rounded-lg hover:shadow-md transition">
+                        <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                            <i class="fas fa-graduation-cap text-purple-500"></i>
+                        </div>
+                        <h4 class="font-semibold mb-2">Education</h4>
+                        <p class="text-sm text-gray-600">Learning management systems for schools and universities.</p>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-6 rounded-lg hover:shadow-md transition">
+                        <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                            <i class="fas fa-heart text-green-500"></i>
+                        </div>
+                        <h4 class="font-semibold mb-2">Healthcare</h4>
+                        <p class="text-sm text-gray-600">Secure platforms for medical practices and hospitals.</p>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-6 rounded-lg hover:shadow-md transition">
+                        <div class="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
+                            <i class="fas fa-utensils text-yellow-500"></i>
+                        </div>
+                        <h4 class="font-semibold mb-2">Restaurants</h4>
+                        <p class="text-sm text-gray-600">Online ordering and reservation systems.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="inline-block px-3 py-1 text-sm font-semibold text-green-500 bg-green-100 rounded-full mb-4">Pricing</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Simple, Transparent <span class="gradient-text">Pricing</span></h2>
+                <p class="max-w-2xl mx-auto text-gray-600">Choose the plan that fits your needs. No hidden fees, cancel anytime.</p>
+                
+                <div class="mt-8 flex justify-center">
+                    <div class="inline-flex bg-white rounded-full p-1 shadow-sm">
+                        <button id="monthly-btn" class="px-6 py-2 rounded-full font-medium bg-blue-500 text-white">Monthly</button>
+                        <button id="yearly-btn" class="px-6 py-2 rounded-full font-medium text-gray-600 hover:text-blue-500">Yearly (Save 20%)</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Basic Plan -->
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition transform hover:-translate-y-2">
+                    <div class="p-8">
+                        <h3 class="text-xl font-semibold mb-2">Basic</h3>
+                        <p class="text-gray-600 mb-6">Perfect for individuals and small projects</p>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold">$19</span>
+                            <span class="text-gray-500">/month</span>
+                        </div>
+                        <a href="#signup" class="block w-full py-3 px-4 text-center bg-gray-100 text-gray-800 rounded-md font-medium hover:bg-gray-200 transition">Get Started</a>
+                    </div>
+                    <div class="border-t border-gray-200 p-8 bg-gray-50">
+                        <ul class="space-y-4">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-3"></i>
+                                <span>Up to 5 projects</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-3"></i>
+                                <span>10GB storage</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-3"></i>
+                                <span>Basic analytics</span>
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                <i class="fas fa-times mr-3"></i>
+                                <span>No e-commerce</span>
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                <i class="fas fa-times mr-3"></i>
+                                <span>Limited support</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Pro Plan (Featured) -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden border-2 border-blue-500 transform hover:-translate-y-2">
+                    <div class="bg-blue-500 text-white text-center py-2">
+                        <span class="text-sm font-medium">MOST POPULAR</span>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-xl font-semibold mb-2">Professional</h3>
+                        <p class="text-gray-600 mb-6">For growing businesses and agencies</p>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold">$49</span>
+                            <span class="text-gray-500">/month</span>
+                        </div>
+                        <a href="#signup" class="block w-full py-3 px-4 text-center bg-blue-500 text-white rounded-md font-medium hover:bg-blue-600 transition">Get Started</a>
+                    </div>
+                    <div class="border-t border-gray-200 p-8 bg-gray-50">
+                        <ul class="space-y-4">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-3"></i>
+                                <span>Up to 20 projects</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-3"></i>
+                                <span>50GB storage</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-3"></i>
+                                <span>Advanced analytics</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-3"></i>
+                                <span>E-commerce ready</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-3"></i>
+                                <span>Priority support</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Enterprise Plan -->
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition transform hover:-translate-y-2">
+                    <div class="p-8">
+                        <h3 class="text-xl font-semibold mb-2">Enterprise</h3>
+                        <p class="text-gray-600 mb-6">For large organizations with custom needs</p>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold">$99</span>
+                            <span class="text-gray-500">/month</span>
+                        </div>
+                        <a href="#signup" class="block w-full py-3 px-4 text-center bg-gray-100 text-gray-800 rounded-md font-medium hover:bg-gray-200 transition">Get Started</a>
+                    </div>
+                    <div class="border-t border-gray-200 p-8 bg-gray-50">
+                        <ul class="space-y-4">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-3"></i>
+                                <span>Unlimited projects</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-3"></i>
+                                <span>500GB storage</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-3"></i>
+                                <span>Premium analytics</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-3"></i>
+                                <span>Advanced e-commerce</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-3"></i>
+                                <span>24/7 dedicated support</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <p class="text-gray-600 mb-4">Need something custom?</p>
+                <a href="#" class="text-blue-500 font-medium hover:text-blue-600">Contact our sales team <i class="fas fa-arrow-right ml-1"></i></a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="inline-block px-3 py-1 text-sm font-semibold text-yellow-500 bg-yellow-100 rounded-full mb-4">Testimonials</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">What Our <span class="gradient-text">Customers</span> Say</h2>
+                <p class="max-w-2xl mx-auto text-gray-600">Don't just take our word for it - hear from some of our amazing customers.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-gray-50 p-8 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="flex -space-x-2">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah Johnson" class="w-10 h-10 rounded-full border-2 border-white">
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-semibold">Sarah Johnson</h4>
+                            <p class="text-sm text-gray-500">CEO, TechStart</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"Nexus has transformed our online presence. We've seen a 40% increase in conversions since switching to their platform."</p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-gray-50 p-8 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="flex -space-x-2">
+                            <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Michael Chen" class="w-10 h-10 rounded-full border-2 border-white">
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-semibold">Michael Chen</h4>
+                            <p class="text-sm text-gray-500">Marketing Director, GlobalCorp</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"The analytics tools alone are worth the price. We've been able to make data-driven decisions that have significantly improved our ROI."</p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-gray-50 p-8 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="flex -space-x-2">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Emma Rodriguez" class="w-10 h-10 rounded-full border-2 border-white">
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-semibold">Emma Rodriguez</h4>
+                            <p class="text-sm text-gray-500">Founder, Boutique Shop</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"Setting up my online store was incredibly easy with Nexus. I had zero technical experience but was able to launch in just a few days."</p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section id="signup" class="py-20 bg-gradient-to-r from-blue-500 to-purple-600 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="md:flex items-center justify-between">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Transform Your Business?</h2>
+                    <p class="text-lg opacity-90">Join thousands of businesses already using Nexus to power their digital presence.</p>
+                </div>
+                <div class="md:w-1/2">
+                    <form class="bg-white rounded-lg shadow-xl p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4">Start your free trial today</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            <div>
+                                <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                                <input type="password" id="password" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            <button type="submit" class="w-full py-3 px-4 bg-blue-500 text-white rounded-md font-medium hover:bg-blue-600 transition btn-hover-effect">
+                                Get Started Free
+                            </button>
+                            <p class="text-xs text-gray-500 text-center">By signing up, you agree to our Terms of Service and Privacy Policy.</p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="inline-block px-3 py-1 text-sm font-semibold text-purple-500 bg-purple-100 rounded-full mb-4">FAQ</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Frequently Asked <span class="gradient-text">Questions</span></h2>
+                <p class="max-w-2xl mx-auto text-gray-600">Find answers to common questions about our platform.</p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <div class="space-y-4">
+                    <!-- FAQ Item 1 -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <button class="flex items-center justify-between w-full text-left focus:outline-none faq-toggle">
+                            <h3 class="text-lg font-medium text-gray-900">What is Nexus and how does it work?</h3>
+                            <i class="fas fa-chevron-down text-gray-500 transition-transform transform"></i>
+                        </button>
+                        <div class="mt-3 text-gray-600 hidden faq-content">
+                            <p>Nexus is an all-in-one platform that helps you build, launch, and manage your digital presence. Our intuitive drag-and-drop interface makes it easy to create professional websites and applications without any coding knowledge. Behind the scenes, we handle hosting, security, and performance optimization so you can focus on your business.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 2 -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <button class="flex items-center justify-between w-full text-left focus:outline-none faq-toggle">
+                            <h3 class="text-lg font-medium text-gray-900">Is there a free trial available?</h3>
+                            <i class="fas fa-chevron-down text-gray-500 transition-transform transform"></i>
+                        </button>
+                        <div class="mt-3 text-gray-600 hidden faq-content">
+                            <p>Yes! We offer a 14-day free trial for all our plans. You can explore all features during this period with no credit card required. If you decide Nexus isn't right for you, simply cancel before the trial ends and you won't be charged.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 3 -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <button class="flex items-center justify-between w-full text-left focus:outline-none faq-toggle">
+                            <h3 class="text-lg font-medium text-gray-900">Can I switch plans later?</h3>
+                            <i class="fas fa-chevron-down text-gray-500 transition-transform transform"></i>
+                        </button>
+                        <div class="mt-3 text-gray-600 hidden faq-content">
+                            <p>Absolutely. You can upgrade or downgrade your plan at any time from your account dashboard. Changes take effect immediately, and we'll prorate the difference if you're upgrading mid-billing cycle.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 4 -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <button class="flex items-center justify-between w-full text-left focus:outline-none faq-toggle">
+                            <h3 class="text-lg font-medium text-gray-900">What payment methods do you accept?</h3>
+                            <i class="fas fa-chevron-down text-gray-500 transition-transform transform"></i>
+                        </button>
+                        <div class="mt-3 text-gray-600 hidden faq-content">
+                            <p>We accept all major credit cards (Visa, Mastercard, American Express, Discover) as well as PayPal. For enterprise customers, we also support bank transfers and can provide custom invoicing.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 5 -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <button class="flex items-center justify-between w-full text-left focus:outline-none faq-toggle">
+                            <h3 class="text-lg font-medium text-gray-900">Do you offer discounts for non-profits?</h3>
+                            <i class="fas fa-chevron-down text-gray-500 transition-transform transform"></i>
+                        </button>
+                        <div class="mt-3 text-gray-600 hidden faq-content">
+                            <p>Yes, we offer a 25% discount for registered non-profit organizations. Please contact our support team with proof of your non-profit status to apply this discount to your account.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-12 text-center">
+                    <p class="text-gray-600 mb-4">Still have questions?</p>
+                    <a href="#" class="text-blue-500 font-medium hover:text-blue-600">Contact our support team <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
+                <div class="col-span-2">
+                    <span class="text-xl font-bold gradient-text">Nexus</span>
+                    <p class="mt-4 text-gray-400">Empowering businesses to create amazing digital experiences with our powerful platform.</p>
+                    <div class="mt-6 flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Product</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Features</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Pricing</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Solutions</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Updates</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Demo</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Resources</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Documentation</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Tutorials</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Community</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Webinars</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Company</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Careers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Press</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Partners</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-12 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">© 2023 Nexus. All rights reserved.</p>
+                <div class="mt-4 md:mt-0 flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // FAQ toggle functionality
+        const faqToggles = document.querySelectorAll('.faq-toggle');
+        
+        faqToggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const content = toggle.nextElementSibling;
+                const icon = toggle.querySelector('i');
+                
+                content.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+        
+        // Pricing toggle
+        const monthlyBtn = document.getElementById('monthly-btn');
+        const yearlyBtn = document.getElementById('yearly-btn');
+        
+        monthlyBtn.addEventListener('click', () => {
+            monthlyBtn.classList.add('bg-blue-500', 'text-white');
+            monthlyBtn.classList.remove('text-gray-600', 'hover:text-blue-500');
+            yearlyBtn.classList.remove('bg-blue-500', 'text-white');
+            yearlyBtn.classList.add('text-gray-600', 'hover:text-blue-500');
+            // Update pricing display logic would go here
+        });
+        
+        yearlyBtn.addEventListener('click', () => {
+            yearlyBtn.classList.add('bg-blue-500', 'text-white');
+            yearlyBtn.classList.remove('text-gray-600', 'hover:text-blue-500');
+            monthlyBtn.classList.remove('bg-blue-500', 'text-white');
+            monthlyBtn.classList.add('text-gray-600', 'hover:text-blue-500');
+            // Update pricing display logic would go here
+        });
+        
+        // Scroll animations
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.animate-fade-in');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>
